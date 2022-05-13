@@ -3,7 +3,7 @@
 
 ## Structure
 
-![structure](.\data\structure.png)
+![structure](data/structure.png)
 
 * Based on the paper https://hdl.handle.net/11296/a55786
   - Replaced the Mask-RCNN part with YOLOv5 to detect landmarks
