@@ -26,7 +26,7 @@ pip install -r requirements.txt
 
 * evaluation
 
-put video file into code folder (ex. /home/files/test.mp4)
+put video file into code folder (ex. /home/files/test.mp4 [https://drive.google.com/file/d/1MZnsnVepD29au6KXi-IT95r5Q6m6Va77/view?usp=sharing]download)
 
 setting: --source {path_to _video} --facialFeature {path_to _output xml}
 
