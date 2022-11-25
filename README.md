@@ -31,7 +31,7 @@ put video file into code folder (ex. /home/files/test.mp4)
 setting: --source {path_to _video} --facialFeature {path_to _output xml}
 
 ```shell
-// in container
+// inside container
 python /home/files/yolov5/detect_xml.py --source /home/files/test.mp4 --facialFeature /home/files/out/test.xml --weights /home/files/yolov5/weights/mix.pt --clss pain
 
 // outside container
