@@ -5,7 +5,7 @@ import shutil
 import time
 from pathlib import Path
 
-import cv2
+# import cv2
 import torch
 import torch.backends.cudnn as cudnn
 from numpy import random
@@ -118,10 +118,10 @@ def detect(save_img=False):
         #     print('%sDone. (%.3fs)' % (s, t2 - t1))
 
             # Stream results
-            if view_img:
-                cv2.imshow(p, im0)
-                if cv2.waitKey(1) == ord('q'):  # q to quit
-                    raise StopIteration
+            # if view_img:
+            #     cv2.imshow(p, im0)
+            #     if cv2.waitKey(1) == ord('q'):  # q to quit
+            #         raise StopIteration
 
             # # Save results (image with detections)
             # if save_img:

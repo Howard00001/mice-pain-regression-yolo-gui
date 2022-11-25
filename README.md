@@ -1,48 +1,41 @@
-# Mice-pain-regression-yolo tool
-Pain analysis system of mice, it can train the classification model by selected videos then use the output model to test on the others selected videos.
+# Yolo detection in docker
 
-## Structure
+Mice landmark detection using yolov5. Running in docker to skip gpu configuration.
 
-![structure](data/structure.png)
+## Process
 
-* Based on the paper https://hdl.handle.net/11296/a55786
-  - Replaced the Mask-RCNN part with YOLOv5 to detect landmarks
-
-## Features
-
-* Train models
-  * Input : positive labeled video and negative labeled video
-  * Batch of models training
-* Inference
-  * Input : video to detect
-  * Batch of videos and can select different models
-* Visualizing the current progress
-  * Yolo detection and SVR training will takes long times
-
-## Installation
+* pull docker image
 
 ```Shell
+docker pull pytorch/pytorch:1.6.0-cuda10.1-cudnn7-devel
+```
+
+* start container with name "yolo_container"
+
+```shell
+docker run --gpus all --name yolo_container -v {path_to_code}:/home/files -it pytorch/pytorch:1.6.0-cuda10.1-cudnn7-devel
+```
+
+* install requirements in docker (inside container)
+
+```shell
+cd /home/files
+apt-get install ffmpeg libsm6 libxext6  -y
 pip install -r requirements.txt
 ```
 
-* Install pytorch (torch==1.6.0+cu101, torchvision==0.7.0+cu101) manually from the official website
+* evaluation
 
-## Run
+put video file into code folder (ex. /home/files/test.mp4)
 
-```Shell
-python start.py
+setting: --source {path_to _video} --facialFeature {path_to _output xml}
+
+```shell
+// in container
+python /home/files/yolov5/detect_xml.py --source /home/files/test.mp4 --facialFeature /home/files/out/test.xml --weights /home/files/yolov5/weights/mix.pt --clss pain
+
+// outside container
+docker exec -id yolo_container python /home/files/yolov5/detect_xml.py --source /home/files/test.mp4 --facialFeature /home/files/out/test.xml --weights /home/files/yolov5/weights/mix.pt --clss pain
 ```
 
-## Operation instruction
-
-* Training
-
-![train](data/train.gif)
-
-* Inference (Testing)
-
-![test](data/test.gif)
-
-## Reference
-
-[yolov5](https://github.com/ultralytics/yolov5)
+output will save to  "path_to_code/out/test.xml"

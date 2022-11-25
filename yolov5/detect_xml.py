@@ -14,7 +14,7 @@ import time
 from pathlib import Path
 import numpy as np
 import xml.etree.cElementTree as ET
-import cv2
+# import cv2
 import torch
 import torch.backends.cudnn as cudnn
 from numpy import random
@@ -27,8 +27,8 @@ from utils.general import (
 from utils.torch_utils import select_device, load_classifier, time_synchronized
 
 
-#code_path = '/data/.sinica_codes/gui' #linux docker
-code_path = './' #windows
+code_path = '/home/files' #docker code path
+# code_path = './' #windows
 
 class xmlManager(object):
     def __init__(self, filePath):
@@ -212,7 +212,7 @@ def detect(save_img=False):
 
 
 
-    cv2.waitKey(0)
+    # cv2.waitKey(0)
     for path, img, im0s, vid_cap in dataset:
         maxBarLen = dataset.nframes
 
@@ -302,8 +302,8 @@ def detect(save_img=False):
 
             # cv2.imshow(p, im0)
             # cv2.waitKey(0)
-            if cv2.waitKey(1) == ord('q'):  # q to quit
-                raise StopIteration
+            # if cv2.waitKey(1) == ord('q'):  # q to quit
+            #     raise StopIteration
     
         # print('Done. (%.3fs)' % (time.time() - t1))
 
